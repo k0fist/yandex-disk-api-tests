@@ -17,9 +17,12 @@
 - python-dotenv
 
 ## Установка проекта, команды для git bash
-1. Создания виртуального окружения - python -m venv venv
-2. Активация виртуального окружения - source venv/Scripts/activate
-3. Установка зависимостей - pip install -r requirements.txt
+1. Создания виртуального окружения
+python -m venv venv
+2. Активация виртуального окружения
+source venv/Scripts/activate
+3. Установка зависимостей
+pip install -r requirements.txt
 4. Создать файл с переменными окружений (.env) по шаблону файла .env.example и поместить его в корень проекта
 
 ## Запуск тестов
