@@ -43,7 +43,10 @@ class ApiClient:
 
     def upload_file(self, local_path, remote_path, overwrite=True):
         """Загрузить локальный файл на Яндекс Диск."""
-        link_response = self.get_upload_link(remote_path=remote_path)
+        link_response = self.get_upload_link(
+            remote_path=remote_path,
+            overwrite=overwrite,
+        )
         link_response.raise_for_status()
 
         upload_url = link_response.json()["href"]
@@ -83,5 +86,12 @@ class ApiClient:
         return self.session.get(
             self._url("resources"),
             params={"path": remote_path},
+            timeout=self.config.timeout,
+        )
+    
+    def get_upload_link_without_params(self):
+        """Получить ссылку для загрузки без обязательных параметров."""
+        return self.session.get(
+            self._url("resources/upload"),
             timeout=self.config.timeout,
         )
